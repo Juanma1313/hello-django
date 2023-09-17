@@ -23,13 +23,33 @@ But in following section we explain each commponent installation step by step
 $ pip3 install 'django<4'
     Note: It's important to make sure that you download the official (and most supported) version of Django. As a result, you should download the latest version of 3. 
 
-2. Create Project 
+2. Create Project (PROJ_NAME = django_todo)
 $ django-admin startproject PROJ_NAME .
     Note: Don’t forget the ‘.’ at the end of the command.
 
-3. Create a new App
+3. Create a new App (APP_NAME = *depends on the app e.g. todo)
 $ python3 manage.py startapp APP_NAME
 
-4. To run the server
+4. Install the Coverage tool 
+$ pip3 install coverage
+
+5. Install a database url package
+$ pip3 install dj-database-url
+    Note: This package allows us to parse the database url that Heroku created.
+
+6.-Install Postgres
+$ pip3 install psycopg2-binary
+    Note: Postgres is a way for your content to ‘talk’ to the database on the back end
+
+7. Install webserver
+$ pip3 install gunicorn
+    Note: Replaces the development server once the app is deployed to Heroku
+
+8. Create superuser
+$ python3 manage.py createsuperuser
+
+9. To run the server
 $ python3 manage.py runserver
-    You will need to add the host name to ALLOWED_HOSTS. See this guide
+    You will need to add the host name to ALLOWED_HOSTS.
+    Run the server and start a browser and wait for the error which will contain the host name.
+    
