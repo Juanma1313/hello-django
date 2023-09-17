@@ -1,39 +1,35 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Steps to create,run, test and deploy the Django app
 
-Welcome,
+It is possible to make a quick install of all required software using the following command:
+$ pip install -r requirements.txt
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+But in following section we explain each commponent installation step by step 
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+## Setting up environment
+1. Create file env.py
+2. Add the env.py name to .gitignore file so it woll not export it to any external repository.
+3. Add all new environmental variables needed that are not specific to the IDE to the env.py file
+    # env.py
+    import os
+    os.environ["var_name"] = "var_value"
 
-## Codeanywhere Reminders
+4. Add any environment variable for any specific environment following the service/framework/IDE config instructions.
+   (e.g. for CodeAnywhere  use the dashboard to get to the settings/environment variables page.)
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
 
-`python3 -m http.server`
+## Setting up Django 
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+1. Install Django
+$ pip3 install 'django<4'
+    Note: It's important to make sure that you download the official (and most supported) version of Django. As a result, you should download the latest version of 3. 
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+2. Create Project 
+$ django-admin startproject PROJ_NAME .
+    Note: Don’t forget the ‘.’ at the end of the command.
 
-`http_server`
+3. Create a new App
+$ python3 manage.py startapp APP_NAME
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
-
----
-
-Happy coding!
+4. To run the server
+$ python3 manage.py runserver
+    You will need to add the host name to ALLOWED_HOSTS. See this guide
