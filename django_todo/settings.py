@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import dj_database_url
 
+if os.path.exists("env.py"):
+    print("Local envonment file found")
+    import env
+
 development = os.environ.get('DEVELOPMENT', False)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -29,8 +33,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = development
 
 if development:
-    ALLOWED_HOSTS = ['localhost']
-    print(f"Runing on development in {ALLOWED_HOSTS}")
+    ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS')]
+    print(f"Runing on development at {ALLOWED_HOSTS}")
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
     print(f"Runing on production in  {ALLOWED_HOSTS}")
@@ -93,6 +97,8 @@ else:
     DATABASES = {
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
+
+print(f"Using database: {DATABASES}")
 
 
 # Password validation
